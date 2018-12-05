@@ -1,0 +1,80 @@
+prototype、constructor、new
+
+1.new(144页)
+
+6.2.2构造函数模式(145页中间部分)
+new一个对象的过程
+   1.创建新对象
+   2.把构造函数的作用域，给了新对象
+   3.执行构造函数
+   4.返回新对象
+<script type="text/javascript">
+    //构造函数
+    function xxfn(){}
+    //第一步，看不见的；第二步也看不见；
+    //第三步，后面这个括号，就是执行构造函数
+    //第四步，返回新对象到new xxfn()这里
+    //最后，把新对象使用 = 赋值运算符，给了 _xxfn;
+    var _xxfn = new xxfn()
+</script>
+
+2.prototype(147页)
+
+6.2.3原型模式
+每个函数，都有一个prototype属性，它是一个指针(就是通过它就能获得，是一个地址之类的东西)，指向一个对象，这个对象，包含所有实例共享的属性和方法
+ 
+<script type="text/javascript">
+    function xxfn(){
+        this.a = 1;
+        this.b = 2;
+    }
+
+    xxfn.prototype = {
+        /*init:function(){
+            console.log( "init xxx" );
+        }*/
+        
+    }
+
+    var _xxfn1 = new xxfn();
+    var _xxfn2 = new xxfn();
+    //_xxfn1.a = 2;
+    console.log( _xxfn1.a );
+
+    //这时，我们说，xxfn所有的实例共享prototye中的属相和方法
+</script>
+
+ 3.constructor(148页)
+
+理解原型对象
+  在默认情况下，所有原型对象，会自动获得一个constructor(构造函数)属性，它是一个指向prototype所在的函数的指针
+
+<script type="text/javascript">
+    function xxfn(){
+        this.a = 1;
+        this.b = 2;
+    }
+    //是一个对象，里面的constructor，它的值是xxfn
+    console.log(xxfn.prototype);
+
+    //打印出xxfn这个函数
+    console.log(xxfn.prototype.constructor);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
