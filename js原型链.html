@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    function baseFn(){}
+    //console.log( baseFn.prototype ); //constructor指向baseFn
+    function Sub1(){}
+
+    Sub1.prototype = new baseFn();
+    //console.log( Sub1.prototype.constructor );//指向了函数baseFn()
+    //手动修复原型链，让它指向Sub1
+    Sub1.prototype.constructor = Sub1;
+
+    //添加一个自定义属性
+    Sub1.superclass = baseFn.prototype;
+    //就是让Sub1.superclass保存baseFn.prototype里面的constructor
+
+
+    function Sub2(){}
+    Sub2.prototype = new Sub1();
+    //手动修复原型链，让它指向Sub2
+    Sub2.prototype.constructor = Sub2;
+
+    //添加一个自定义属性
+     Sub2.superclass = Sub1.prototype;
+
+     console.log( Sub2.superclass.constructor ); //指向函数Sub1
+     /*
+     因为Sub2.superclass指向的是Sub1.prototype
+        而Sub1.prototype.constructor指向Sub1
+      */
+
+     console.log( Sub2.superclass.constructor.superclass.constructor ); //指向函数baseFn
+     /*因为Sub2.superclass指向的是Sub1.prototype
+        链条变为Sub1.prototype.constructor.superclass.constructor
+        Sub1.prototype.constructor = Sub1
+        Sub1.superclass指向baseFn.prototype
+        链条变为baseFn.prototype.constructor ,指向baseFn函数
+
+     
+      */
+</script>
