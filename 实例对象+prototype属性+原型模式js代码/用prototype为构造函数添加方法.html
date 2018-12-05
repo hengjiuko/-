@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype为构造函数添加方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function fnxx(){
+            this.say=function( _n ){
+                console.log( "你说什么?" +_n );
+            }
+        }
+
+        //用prototype属性为构造函数添加方法
+        fnxx.prototype.age=function( _n ){
+            console.log( "你今年多大了？" + _n );
+        }
+        fnxx.prototype.work=function( _n ){
+            console.log( "你是干什么工作的？" + _n)
+        }
+
+        //更好的写法
+        /*fnxx.prototype={
+            age : function( _n ){
+                console.log( "你今年多大了？" + _n )
+            },
+            work : function( _n ){
+                console.log( "你是干什么工作的？" + _n)
+            }
+        }*/
+        
+        
+        //new一个实例
+        var _fnxx=new fnxx();
+        //打印实例对象
+        console.log( _fnxx );
+
+        //实例，可以调用构造函数中的方法
+        _fnxx.say( " 今天星期二" );
+
+        //实例，可以调用通过prototype向构造器中添加的方法
+        _fnxx.age( " 18岁" );
+        _fnxx.work( " 学习" )
+    </script>
+
+</body>
+</html>

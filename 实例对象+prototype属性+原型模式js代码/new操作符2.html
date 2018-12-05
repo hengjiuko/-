@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new操作符2</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        /*
+        在这种情况下，通过new操作符，用来生成
+        实例的函数，被称为“构造器” ，或"构造函数"
+         */
+        function fnxx(){
+            //添加一些方法
+            this.name=function(){
+                console.log( "我是小明" );
+            }
+            this.age=function(){
+                console.log( "今年18岁" );
+            }
+            this.play=function( n ){
+                console.log( "我喜欢玩" + n +"游戏" );
+            }
+        }
+        //将生成实例保存在一个变量里
+        var _fnxx=new fnxx();
+        //console.log( _fnxx );
+
+        //通过对象的实例，可以调用对象中定义的方法
+        _fnxx.name();
+        _fnxx.age();
+        _fnxx.play( "枪战" );
+        
+        //一个函数可以生成多个实例，接受不同的参数
+        var _fnxx2=new fnxx();
+        _fnxx2.name();
+        _fnxx2.age();
+        _fnxx2.play( "飞机" );
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

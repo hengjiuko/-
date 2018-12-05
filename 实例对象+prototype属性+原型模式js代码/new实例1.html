@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new生成实例的样子</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function fnxx(){
+            console.log( 'fnxx 对象 123' );
+        }
+        //将函数原样输出
+        console.log( fnxx );
+
+        //new一个实例
+        /*1.首先执行了函数，输出了“fnxx 对象 123”
+          2.输出了一个空对象，名为fnxx
+          3.这个fnxx对象，就是fnxx()的实例
+
+        */
+        console.log( new fnxx() );
+
+       /* var _fn=new fnxx();
+        _fn;*/
+    </script>
+</body>
+</html>
